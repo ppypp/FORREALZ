@@ -43,7 +43,7 @@ public class OI {
         jB4 = new JoystickButton(joystick1, 2);
         jB4.whileHeld(new LowerArm());
         jB4.whenReleased(new ArmStop());
-        
+                
         jB5 = new JoystickButton(joystick1, 3);
         jB5.whileHeld(new IntakePickup());
         jB5.whenReleased(new PickupStop());
