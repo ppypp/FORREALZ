@@ -23,17 +23,13 @@ public class Elevator extends Subsystem {
      * This raises the elevator
      */
     public void up(double d) {
-		while(!elevHighLS.get() && OI.jB1.get()){ //While not at top and button is pressed
-			spark2.set(d);
-		}
+    	spark2.set(d);
 	}
 	/*
      * This lowers the elevator
      */
 	public void down(double d) {
-		while(!elevLowLS.get() && OI.jB2.get()){
-			spark2.set(-d);
-		}
+		spark2.set(-d);
 	}
 	/*
      * This stop motor on the elevator
