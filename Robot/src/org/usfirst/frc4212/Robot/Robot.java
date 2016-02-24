@@ -18,7 +18,7 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
 
-	public final static double ASPEED = 1;
+	public final static double ASPEED = .5;
 	public final static double ESPEED = 1;
 	public final static double PSPEED = .5;
 	
