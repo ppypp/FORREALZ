@@ -20,7 +20,7 @@ public class Robot extends IterativeRobot {
 
 	public final static double ASPEED = 1;
 	public final static double ESPEED = 1;
-	public final static double PSPEED = .5;
+	public final static double PSPEED = 1;
 	
     public static OI oi;
     public static DriveTrain driveTrain;

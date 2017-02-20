@@ -28,7 +28,7 @@ public class Auto1 extends Command {
     protected void execute() {
     		
     		done = true;
-    		if (count < x && count < 10){
+    		if (count < x && count < 9){
     			Robot.arm.up(1);
     			count++;
     		}else if (count < x){
