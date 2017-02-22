@@ -22,11 +22,17 @@ public class Robot extends IterativeRobot {
 	public final static double ESPEED = 1;
 	public final static double PSPEED = 1;
 	
-    public static OI oi;
+    
+    //Drive and Lift
     public static DriveTrain driveTrain;
-    public static Arm arm;
-    public static Elevator elevator;
-    public static Pickup pickup;
+    //Lift
+    public static LiftModule lift;
+    //Balls
+    public static BallModule ball;
+    //Gears
+    public static GearModule gear;
+    
+    public static OI oi;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -34,10 +40,15 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     	RobotMap.init();
+    	
         driveTrain = new DriveTrain();
-        arm = new Arm();
-        elevator = new Elevator();
-        pickup = new Pickup();
+        
+        lift = new LiftModule();
+        
+        ball = new BallModule();
+        
+        gear = new GearModule();
+        
         //OI MUST BE LAST TO BE MADE
         oi = new OI();
         

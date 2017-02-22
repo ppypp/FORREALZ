@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.*;
+import edu.wpi.first.wpilibj.command.Command;
 
 
 /**
@@ -49,12 +50,12 @@ public class OI {
 //        jB2.whenReleased(new ElevStop());
         
         jBX1 = new JoystickButton(xbox, 1);
-        jBX1.whileHeld(new ExtendElev());
-        jBX1.whenReleased(new ElevStop());
+        jBX1.whileHeld(new Lift());
+        jBX1.whenReleased(new BallEject());
         
         jBX2 = new JoystickButton(xbox, 3);
-        jBX2.whileHeld(new RetractElev());
-        jBX2.whenReleased(new ElevStop());
+        jBX2.whileHeld(new GearRelease());
+        jBX2.whenReleased(new BallEject());
         
         //Arm
 //        jB3 = new JoystickButton(left, 4);
@@ -66,32 +67,29 @@ public class OI {
 //        jB4.whenReleased(new ArmStop());
 //        
         jBX3 = new JoystickButton(xbox, 6);
-        jBX3.whileHeld(new RaiseArm());
-        jBX3.whenReleased(new ArmStop());
         
         jBX4 = new JoystickButton(xbox, 5);
-        jBX4.whileHeld(new LowerArm());
-        jBX4.whenReleased(new ArmStop());
              
         //Pickup-Shoot
         jB5 = new JoystickButton(left, 7);
-        jB5.whileHeld(new IntakePickup());
-        jB5.whenReleased(new PickupStop());
         
         jB6 = new JoystickButton(left, 6);
-        jB6.whileHeld(new ShootPickup());
-        jB6.whenReleased(new PickupStop());
+        jB6.whileHeld(new BallShooter());
+        jB6.whenReleased(new GearPickup());
         
         // SmartDashboard Buttons
         SmartDashboard.putData("Task1", new Task1());
         SmartDashboard.putData("Auto1", new Auto1());
         SmartDashboard.putData("Auto2", new Auto2());
-        SmartDashboard.putData("ExtendElev", new ExtendElev());
-        SmartDashboard.putData("RetractElev", new RetractElev());
-        SmartDashboard.putData("RaiseArm", new RaiseArm());
-        SmartDashboard.putData("LowerArm", new LowerArm());
-        SmartDashboard.putData("IntakePickup", new IntakePickup());
-        SmartDashboard.putData("ShootPickup", new ShootPickup());
+        SmartDashboard.putData("Lift", new Lift());
+        SmartDashboard.putData("Lower", new Lower());
+        SmartDashboard.putData("GearPickup", new GearPickup());
+        SmartDashboard.putData("GearFlip", new GearFlip());
+        SmartDashboard.putData("GearRelease", new GearRelease());
+        SmartDashboard.putData("BallIntake", new BallIntake());
+        SmartDashboard.putData("BallEject", new BallEject());
+        SmartDashboard.putData("BallShooter", new BallShooter());
+        
         SmartDashboard.putData("Drive", new Drive());
     }
 
