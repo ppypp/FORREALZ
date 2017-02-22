@@ -19,31 +19,39 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class RobotMap {
 	
-    public static SpeedController driveTrainSP1;
-    public static SpeedController driveTrainSP2;
+    public static SpeedController driveTrainSPL1;
+    public static SpeedController driveTrainSPL2;
+    public static SpeedController driveTrainSPR1;
+    public static SpeedController driveTrainSPR2;
+    
     public static RobotDrive driveTrainRD;
     public static AnalogGyro driveTrainGyro;
+    
     public static PowerDistributionPanel driveTrainPDP;
     
-    public static SpeedController armSpark;
-    public static DigitalInput armArmHighLS;
-    public static DigitalInput armArmLowLS;
+    public static SpeedController ballPickupSpark;
+    public static SpeedController ballShooterSpark;
     
-    public static SpeedController elevatorSpark;
-    public static DigitalInput elevatorElevHighLS;
-    public static DigitalInput elevatorElevLowLS;
+    public static SpeedController lift1Spark;
+    public static SpeedController lift2Spark;
+    public static DigitalInput liftLS;
     
-    public static SpeedController pickupSpark;
-    public static DigitalInput pickupPickupLS;
+    public static SpeedController gearSpark;
 
     public static void init() {
-        driveTrainSP1 = new VictorSP(0);
-        LiveWindow.addActuator("DriveTrain", "SP1", (VictorSP) driveTrainSP1);
+        driveTrainSPL1 = new Spark(0);
+        LiveWindow.addActuator("DriveTrain", "SP1", (Spark) driveTrainSPL1);
         
-        driveTrainSP2 = new VictorSP(1);
-        LiveWindow.addActuator("DriveTrain", "SP2", (VictorSP) driveTrainSP2);
+        driveTrainSPL2 = new Spark(1);
+        LiveWindow.addActuator("DriveTrain", "SP2", (Spark) driveTrainSPL2);
         
-        driveTrainRD = new RobotDrive(driveTrainSP1, driveTrainSP2);
+        driveTrainSPR1 = new Spark(2);
+        LiveWindow.addActuator("DriveTrain", "SP1", (Spark) driveTrainSPR1);
+        
+        driveTrainSPR2 = new Spark(3);
+        LiveWindow.addActuator("DriveTrain", "SP2", (Spark) driveTrainSPR2);
+        
+        driveTrainRD = new RobotDrive(driveTrainSPL1, driveTrainSPL2, driveTrainSPR1, driveTrainSPR2);
         
         driveTrainRD.setSafetyEnabled(false);
         driveTrainRD.setExpiration(0.1);
@@ -58,28 +66,27 @@ public class RobotMap {
         driveTrainPDP = new PowerDistributionPanel(0);
         LiveWindow.addSensor("DriveTrain", "PDP", driveTrainPDP);
         
-        armSpark = new Spark(2);
-        LiveWindow.addActuator("Arm", "Spark1", (Spark) armSpark);
+        //Gear Controllers
+        gearSpark = new Spark(4);
+        LiveWindow.addActuator("Arm", "Spark1", (Spark) gearSpark);
         
-        armArmHighLS = new DigitalInput(0);
-        LiveWindow.addSensor("Arm", "ArmHighLS", armArmHighLS);
+        //PNEUMATICS NEEDED
         
-        armArmLowLS = new DigitalInput(1);
-        LiveWindow.addSensor("Arm", "ArmLowLS", armArmLowLS);
+        //Ball Controllers
+        ballPickupSpark = new Spark(5);
+        LiveWindow.addActuator("Elevator", "Spark2", (Spark) ballPickupSpark);
         
-        elevatorSpark = new Spark(3);
-        LiveWindow.addActuator("Elevator", "Spark2", (Spark) elevatorSpark);
+        ballShooterSpark = new Spark(6);
+        LiveWindow.addActuator("Pickup", "Spark3", (Spark) ballShooterSpark);
         
-        elevatorElevHighLS = new DigitalInput(2);
-        LiveWindow.addSensor("Elevator", "ElevHighLS", elevatorElevHighLS);
+        //Lift Controllers
+        lift1Spark = new Spark(7);
+        LiveWindow.addActuator("Pickup", "Spark3", (Spark) lift1Spark);
         
-        elevatorElevLowLS = new DigitalInput(3);
-        LiveWindow.addSensor("Elevator", "ElevLowLS", elevatorElevLowLS);
+        lift2Spark = new Spark(8);
+        LiveWindow.addActuator("Pickup", "Spark3", (Spark) lift2Spark);
         
-        pickupSpark = new Spark(4);
-        LiveWindow.addActuator("Pickup", "Spark3", (Spark) pickupSpark);
-        
-        pickupPickupLS = new DigitalInput(4);
-        LiveWindow.addSensor("Pickup", "PickupLS", pickupPickupLS);
+        liftLS = new DigitalInput(0);
+        LiveWindow.addSensor("Pickup", "PickupLS", liftLS);
 	}
 }

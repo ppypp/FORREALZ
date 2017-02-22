@@ -10,29 +10,33 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class Elevator extends Subsystem {
+public class GearModule extends Subsystem {
 
-    private final SpeedController spark2 = RobotMap.elevatorSpark;
-    private final DigitalInput elevHighLS = RobotMap.elevatorElevHighLS;
-    private final DigitalInput elevLowLS = RobotMap.elevatorElevLowLS;
+    private final SpeedController spark2 = RobotMap.gearSpark;
 
     public void initDefaultCommand() {
     }
 
     /*
-     * This raises the elevator
+     * This picks up the gears
      */
-    public void up(double d) {
+    public void pickup(double d) {
     	spark2.set(d);
 	}
 	/*
-     * This lowers the elevator
+     * This flips the gear up
      */
-	public void down(double d) {
+	public void flip(double d) {
 		spark2.set(-d);
 	}
 	/*
-     * This stop motor on the elevator
+     * This release of gear
+     */
+	public void release(double d) {
+		spark2.set(-d);
+	}
+	/*
+     * This stop motor 
      */
 	public void stop() {
 		spark2.set(0);

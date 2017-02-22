@@ -1,41 +1,32 @@
 package org.usfirst.frc4212.Robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc4212.Robot.Robot;
-import org.usfirst.frc4212.Robot.RobotMap;
 
 /**
  *
  */
-public class Auto1 extends Command {
-	int x;
-	int count;
-	boolean done = false;
-	
-    public Auto1() {
+public class BallIntake extends Command {
 
-        requires(Robot.driveTrain);
-        
+
+    public BallIntake() {
+        requires(Robot.ball);
+
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {
-    	x = 400;
-    	count =0;
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    		
-
-    	}
+    protected void execute(){
+    	Robot.ball.intake(0);
     	
-    	
-    
+    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return false; // Should be checking if button is still held
     }
 
     // Called once after isFinished returns true
